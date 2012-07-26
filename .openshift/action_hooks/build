@@ -13,6 +13,11 @@ ln -sf $OPENSHIFT_DATA_DIR/uploads $OPENSHIFT_REPO_DIR/php/wp-content/
 if [ ! -f $OPENSHIFT_DATA_DIR/secret-keys.php ]; then
 	curl -s https://api.wordpress.org/secret-key/1.1/salt/ > $OPENSHIFT_DATA_DIR/secret-keys.php
 fi
-keys=$(cat $OPENSHIFT_DATA_DIR/secret-keys.php)
-find='put your unique phrase here'
-printf '%s\n' "g/$find/d" a "$keys" . w | ed -s $OPENSHIFT_REPO_DIR/wp-config.php
+
+sed -i -e '/#@+/,/#@-/ {
+	s/.*NONCE_SALT.*/{KEYS}/
+	/put\syour/d
+}' -e '/{KEYS}/ {
+	r '"$OPENSHIFT_DATA_DIR/secret-keys.php"'
+	d
+}' $OPENSHIFT_REPO_DIR/wp-config.php
