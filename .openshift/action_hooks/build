@@ -8,7 +8,7 @@ if [ ! -d $OPENSHIFT_DATA_DIR/uploads ]; then
 	mkdir $OPENSHIFT_DATA_DIR/uploads
 fi
 
-ln -sf $OPENSHIFT_DATA_DIR/uploads $OPENSHIFT_REPO_DIR/php/wp-content/
+ln -sf $OPENSHIFT_DATA_DIR/uploads $OPENSHIFT_REPO_DIR/php/content/
 
 if [ ! -f $OPENSHIFT_DATA_DIR/secret-keys.php ]; then
 	curl -s https://api.wordpress.org/secret-key/1.1/salt/ > $OPENSHIFT_DATA_DIR/secret-keys.php
@@ -20,4 +20,4 @@ sed -i -e '/#@+/,/#@-/ {
 }' -e '/{KEYS}/ {
 	r '"$OPENSHIFT_DATA_DIR/secret-keys.php"'
 	d
-}' $OPENSHIFT_REPO_DIR/wp-config.php
+}' $OPENSHIFT_REPO_DIR/php/wp-config.php

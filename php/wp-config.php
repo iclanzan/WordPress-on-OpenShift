@@ -80,6 +80,36 @@ define('WPLANG', '');
  */
 define('WP_DEBUG', false);
 
+if ( WP_DEBUG ) {
+	/** Disable logging to wp-content/debug.log */
+	define('WP_DEBUG_LOG', false);
+
+	/** Don't display errors. */
+	define('WP_DEBUG_DISPLAY', false);
+
+	/** Don't use minified scripts. */
+	define('SCRIPT_DEBUG', true);
+
+	/** Save database query info in the `$wpdb->queries` array. */
+	define('SAVEQUERIES', true);
+
+	/** Log errors to debug.log inside the OpenShift log directory. */
+	ini_set( 'log_errors', 1 );
+	ini_set( 'error_log', $_ENV['OPENSHIFT_LOG_DIR'] . 'debug.log' );
+}
+
+/** Define the content directory. Needs to be a full path with no trailing slash. */
+define('WP_CONTENT_DIR', dirname(__FILE__) . '/content');
+
+/** Full URL to the content directory, no trailing slash */
+define('WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/content' );
+
+/** Define WordPress address (URL) */
+define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/wordpress');
+
+/** Define Home address (URL) */
+define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
+
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */
