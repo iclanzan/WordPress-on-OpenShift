@@ -1,7 +1,7 @@
 RewriteEngine On
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
-# RewriteRule ^login$ wp-login.php
+# RewriteRule ^login$ wordpress/wp-login.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
