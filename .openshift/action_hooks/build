@@ -10,6 +10,12 @@ fi
 
 ln -sf $OPENSHIFT_DATA_DIR/uploads $OPENSHIFT_REPO_DIR/php/content/
 
+if [ ! -f $OPENSHIFT_DATA_DIR/htaccess ]; then
+	touch $OPENSHIFT_DATA_DIR/htaccess
+fi
+
+ln -sf $OPENSHIFT_DATA_DIR/htaccess $OPENSHIFT_REPO_DIR/php/.htaccess
+
 if [ ! -f $OPENSHIFT_DATA_DIR/secret-keys.php ]; then
 	curl -s https://api.wordpress.org/secret-key/1.1/salt/ > $OPENSHIFT_DATA_DIR/secret-keys.php
 fi
