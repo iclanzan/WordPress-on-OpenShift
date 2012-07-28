@@ -26,7 +26,7 @@ WordPress lives in a subdirectory, specifically `php/wordpress`, to make updatin
 
 Because of the above consideration, the `wp-content` directory needs to sit outside of `php/wordpress` so it is set to `php/conent`.
 
-The `php/wp-config.php` is the WordPress configuration file.
+The WordPress configuration file is `php/wp-config.php` and sits outside the WordPress root directory as well.
 
 When first accessing your app a set of secret keys and salts are requested from https://api.wordpress.org/secret-key/1.1/salt/ and on each build they are added to the config file. If you need to have new keys generated for you just remove the `../data/secret-keys.php` file.
 
@@ -34,6 +34,6 @@ The WordPress Site URL and Home URL are dynamically set inside the config file b
 
 When debugging, set `define('WP_DEBUG', false);` to `define('WP_DEBUG', true);`. Errors will be logged to `$OPENSHIFT_LOG_DIR/debug.log`.
 
-The uploads directory is set to `$OPENSHIFT_DATA_DIR/uploads` because anything placed in the `data` directory is persistent. In order for WordPress to be able to use this directory though, a symbolic link to this directory is created at `php/uploads`.
+The uploads directory is set to `$OPENSHIFT_DATA_DIR/uploads` because anything placed in the `$OPENSHIFT_DATA_DIR` directory is persistent. In order for WordPress to be able to use this directory though, a symbolic link to this directory is created at `php/uploads`.
 
 The `php/.htaccess` file that WordPress creates is a symlink to `$OPENSHIFT_DATA_DIR/htaccess` to preserve it.
