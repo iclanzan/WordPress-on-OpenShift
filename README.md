@@ -34,6 +34,6 @@ The WordPress Site URL and Home URL are dynamically set inside the config file b
 
 When debugging, set `define('WP_DEBUG', false);` to `define('WP_DEBUG', true);`. Errors will be logged to `$OPENSHIFT_LOG_DIR/debug.log`.
 
-The uploads directory is set to `$OPENSHIFT_DATA_DIR/uploads` because anything placed in the `$OPENSHIFT_DATA_DIR` directory is persistent. In order for WordPress to be able to use this directory though, a symbolic link to this directory is created at `php/uploads`.
+The uploads directory is set to `$OPENSHIFT_DATA_DIR/uploads` because anything placed in the `$OPENSHIFT_DATA_DIR` directory is persistent. In order for WordPress to be able to use this directory though, a symbolic link to this directory is created at `php/content/uploads`.
 
 The `php/.htaccess` file that WordPress creates is a symlink to `$OPENSHIFT_DATA_DIR/htaccess` to preserve it.
