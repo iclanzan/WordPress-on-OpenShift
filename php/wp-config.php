@@ -19,13 +19,13 @@
 define('DB_NAME', $_ENV['OPENSHIFT_APP_NAME']);
 
 /** MySQL database username */
-define('DB_USER', $_ENV['OPENSHIFT_DB_USERNAME']);
+define('DB_USER', $_ENV['OPENSHIFT_MYSQL_DB_USERNAME']);
 
 /** MySQL database password */
-define('DB_PASSWORD', $_ENV['OPENSHIFT_DB_PASSWORD']);
+define('DB_PASSWORD', $_ENV['OPENSHIFT_MYSQL_DB_PASSWORD']);
 
 /** MySQL hostname */
-define('DB_HOST', $_ENV['OPENSHIFT_DB_HOST']);
+define('DB_HOST', $_ENV['OPENSHIFT_MYSQL_DB_HOST']);
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -95,7 +95,7 @@ if ( WP_DEBUG ) {
 
 	/** Log errors to debug.log inside the OpenShift log directory. */
 	ini_set( 'log_errors', 1 );
-	ini_set( 'error_log', $_ENV['OPENSHIFT_LOG_DIR'] . 'debug.log' );
+	ini_set( 'error_log', $_ENV['OPENSHIFT_PHP_LOG_DIR'] . 'debug.log' );
 }
 
 /** Define the content directory. Needs to be a full path with no trailing slash. */
