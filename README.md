@@ -7,16 +7,12 @@ This repository's purpose is to quickly get WordPress up and running on OpenShif
 Installation
 ------------
 
-Open an account at http://openshift.redhat.com/ if you don't have one already and create a new `php-5.3` application.
-Add the MySQL cartridge to your new app.
-Clone your app's git repository to your computer and `cd` into it.
-Add this git repository as an upstream server and then `pull` and `push` like this:
+Open an account at http://openshift.redhat.com/ if you don’t have one already and make sure you have the `rhc` gem installed.
+Then one command is all you need to deploy a fresh WordPress powered website on OpenShift:
 
-	git remote add upstream -m master git://github.com/iclanzan/WordPress-on-OpenShift.git
-	git pull -s recursive -X theirs upstream master
-	git push
-
-Done!
+```
+rhc app create wordpress php-5 mysql-5 --from-code=https://github.com/iclanzan/WordPress-on-OpenShift
+```
 
 
 Notes
