@@ -20,7 +20,7 @@ Notes
 
 WordPress lives in a subdirectory, specifically `php/wordpress`, to make updating it easy. In order to update WordPress one needs to replace `php/wordpress` with the new version.
 
-Because of the above consideration, the `wp-content` directory needs to sit outside of `php/wordpress` so it is set to `php/conent`.
+Because of the above consideration, the `wp-content` directory needs to sit outside of `php/wordpress` so it is set to `php/content`.
 
 The WordPress configuration file is `php/wp-config.php` and sits outside the WordPress root directory as well.
 
